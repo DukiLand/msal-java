@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Success</title>
+</head>
+<body>
+<div id="msg"></div>
+<div>
+    <button type="button" id="signOut">sign-out</button>
+</div>
+</body>
+<script>
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
+            document.querySelector("#msg").innerText = "Welcome " + xhr.responseText + " !^o^!";
+        }
+    };
+    xhr.open("GET", "/id", true);
+    xhr.send();
+
+    document.querySelector("#signOut").addEventListener("click", function() {
+        document.location.href = "/auth/sign_out";
+    });
+</script>
+</html>
